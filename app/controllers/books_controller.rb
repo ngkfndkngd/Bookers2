@@ -1,20 +1,35 @@
 class BooksController < ApplicationController
+  
   def index
-    @book=Book.new
+    @user=current_user
+    @book_new=Book.new
+    @books=Book.all
+  end 
+  
+  def create
+    @user=current_user
+    @books = Book.all
+    @book = Book.new(book_params)
+    @book.user_id = current_user.id
     
-    def create
-    # １. データを新規登録するためのインスタンス作成
-    book = Book.new(book_params)
-    # ２. データをデータベースに保存するためのsaveメソッド実行
-    book.save
-    # ３. トップ画面へリダイレクト
-    redirect_to 
+    @book.save
+    
+    redirect_to book_path(@book.id)
   end
+  
+  def show
+    @book_new = Book.new
+    @book = Book.find(params[:id])
+    @user = @book.user 
+    
+  end
+  
 
   private
-  # ストロングパラメータ
-  def list_params
-    params.require(:list).permit(:title, :body)
+  
+  def book_params
+    params.require(:book).permit(:title, :body)
   end
-  end
+  
+  
 end

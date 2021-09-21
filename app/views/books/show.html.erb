@@ -1,0 +1,16 @@
+
+aaaaa
+
+<%= link_to user_path(@book.user_id) do %>
+<%= attachment_image_tag @book.user, :profile_image, size:"40x40", format:'jpeg', fallback:"no_image.jpg" %>
+<%= @book.user.name %>
+<% end %>
+<%= @book.title %>
+<%= @book.body %>
+
+
+
+<% if @book.user.id == current_user.id %>
+<%= link_to 'Edit',edit_book_path(@book.id) %>
+<%= link_to 'Dstotoy',books_path,method: :delete %>
+<% end %>
