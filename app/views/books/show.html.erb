@@ -35,7 +35,7 @@
                 <td><%= @book.body %></td>
                 <% if @book.user.id == current_user.id %>
                 <td><%= link_to 'Edit',edit_book_path(@book.id),class: "btn btn-sm btn-success"  %></td>
-                <td><%= link_to 'Dstotoy',books_path, method: :delete,class: "btn btn-sm btn-danger" %></td>
+                <td><%= link_to 'Dstotoy',book_path, method: :delete,class: "btn btn-sm btn-danger" %></td>
                 <% end %>
               </tr>
             </tbody>
