@@ -2,7 +2,7 @@ class BooksController < ApplicationController
  before_action :authenticate_user!,except: [:top]
   def index
     @user=current_user
-    @book_new=Book.new
+    @book=Book.new
     @books=Book.all
   end
 
@@ -14,7 +14,6 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book.id), notice:'You have creatad book successfully.'
     else
-      @book_new=Book.new
       render :index
     end
   end
