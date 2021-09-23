@@ -3,6 +3,14 @@
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
+        <% if @book_new.errors.any? %>
+             <div id="error_explanation">
+              <h3><%= @book_new.errors.count %>error prohibited this obj from being saved:</h3>
+               <% @boo.errors.full_messages.each do |message| %>
+                 <%= message %>
+              <% end %>
+              </div>
+            <% end %>
       <%= render 'users/new', user: @user,book_new: @book_new %>
       </div>
 

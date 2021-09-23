@@ -31,7 +31,7 @@ class BooksController < ApplicationController
     if @book.user != current_user
       redirect_to books_path
     end
-    
+
   end
 
   def update
